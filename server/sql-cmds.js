@@ -9,7 +9,7 @@ SELECT *
 
 module.exports.sqlCreatTable = `
 CREATE SCHEMA IF NOT EXISTS "livingroom";
-ALTER SCHEMA "livingroom" OWNER TO "groupFamily";
+ALTER SCHEMA "livingroom" OWNER TO "team10test";
 CREATE TABLE IF NOT EXISTS "livingroom"."temperature"(
   id serial,
   timestamp timestamp without time zone NOT NULL
@@ -17,7 +17,12 @@ CREATE TABLE IF NOT EXISTS "livingroom"."temperature"(
   temperature integer,
   PRIMARY KEY (id)
 );
-ALTER TABLE "livingroom"."temperature" OWNER to "groupFamily";
-GRANT ALL ON ALL TABLES IN SCHEMA "livingroom" TO "groupFamily";
-GRANT ALL ON ALL SEQUENCES IN SCHEMA "livingroom" TO "groupFamily";
+ALTER TABLE "livingroom"."temperature" OWNER to "team10test";
+GRANT ALL ON ALL TABLES IN SCHEMA "livingroom" TO "team10test";
+GRANT ALL ON ALL SEQUENCES IN SCHEMA "livingroom" TO "team10test";
+`;
+
+
+module.exports.sqlDBOwner = `
+  SELECT groname FROM pg_group
 `;
